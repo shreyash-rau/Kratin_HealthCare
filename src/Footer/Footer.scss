@@ -1,0 +1,42 @@
+// @import "color";
+
+footer {
+    background-color: cyan;
+    // height: 150px;
+    width: 100%;
+    color: black;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    padding: 1.5rem;
+    margin-bottom: none;
+
+    h1,
+    p {
+        text-align: left;
+        color: black;
+    }
+
+    .log {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-left: -150%;
+
+        h5 {
+            font-size: 20px;
+            margin: 10px;
+        }
+
+        >a {
+            color: black;
+            text-align: center;
+            margin: 10px;
+            text-decoration: none;
+
+            x &:hover {
+                color: green;
+            }
+        }
+    }
+}

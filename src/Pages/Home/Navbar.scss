@@ -1,0 +1,49 @@
+.navbar {
+    // width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    position: sticky;
+    background-color: cyan;
+    top: 0;
+    height: 12vh;
+    z-index: 10;
+    text-decoration: none;
+    
+
+    img{
+        width: 9%;
+    }
+
+    .container2 {
+        color: white;
+        box-sizing: border-box;
+        width: 80%;
+        text-decoration: none;
+        // display: block;
+        // justify-content: flex-end; 
+
+        ul li {
+            display: inline-block;
+            transition: all 0.5s ease-out;
+            margin-left: 30px;
+            font-size: 22px;
+            font-weight: 300;
+            color: white;
+        }
+        li:hover{
+            color: red;
+            font-weight: 900;
+        }
+    }
+
+    button {
+        margin-left: 30px;
+        width: 10%;
+    }
+
+   
+}

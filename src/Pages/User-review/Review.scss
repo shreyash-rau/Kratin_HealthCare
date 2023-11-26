@@ -1,0 +1,48 @@
+.review {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    grid-gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+
+    p {
+        color: black;
+    }
+
+    .box1 {
+        background-color: rgb(218, 243, 218);
+        border: 2px solid black;
+        margin: 20px;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+
+        img {
+            flex: 1;
+            margin: 40px 10px 0 0;
+            align-items: center;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .box2 {
+            margin: 20px;
+            display: grid;
+
+            .para3 {
+                margin: 20px;
+                font-style: italic;
+            }
+        }
+
+    }
+
+}
+
+button {
+    margin-top: 40px;
+}
