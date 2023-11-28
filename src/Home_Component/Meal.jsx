@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import Countdown from 'react-countdown';
 
@@ -10,9 +8,13 @@ function Meal() {
     { meal: 'Dinner', dish: 'Steak', time: '20:00', nextDish: 'Oatmeal' }
   ]);
 
-  const renderer = ({ hours, minutes, seconds, completed }) => {
-    if (completed) {
-      return <span>It's meal time!</span>;
+  const renderer = ({ hours, minutes, seconds, completed, total }) => {
+    if (completed){
+      // we try to reset the timer every 24 hours
+      if (total <= 0) {
+        return <Countdown date={Date.now() + 24 * 60 * 60 * 1000} renderer={renderer} />;
+      }
+      return <span>It's Meal time!</span>;
     } else {
       return <span>{hours}:{minutes}:{seconds}</span>;
     }
@@ -33,20 +35,33 @@ function Meal() {
           </tr>
         </thead>
         <tbody>
-          {meals.map((meal, index) => (
-            <tr key={index} >
-              <td>{meal.time}</td>
-              <td>{meal.meal}</td>
-              <td>{meal.dish}</td>
-              <td>
-                <Countdown
-                  date={new Date(`2023-11-26T${meal.time}:00`)}
-                  renderer={renderer}
-                />
-              </td>
-              <td>{meal.nextDish}</td>
-            </tr>
-          ))}
+          {meals.map((meal, index) => {
+            // Calculate the target date based on the meal time
+            let targetDate = new Date();
+            targetDate.setHours(Number(meal.time.split(':')[0]));
+            targetDate.setMinutes(Number(meal.time.split(':')[1]));
+            targetDate.setSeconds(0);
+
+            // If the target date is in the past, add 24 hours to it
+            if (targetDate < new Date()) {
+              targetDate = new Date(targetDate.getTime() + 24 * 60 * 60 * 1000);
+            }
+
+            return (
+              <tr key={index}>
+                <td>{meal.time}</td>
+                <td>{meal.meal}</td>
+                <td>{meal.dish}</td>
+                <td>
+                  <Countdown
+                    date={targetDate}
+                    renderer={renderer}
+                  />
+                </td>
+                <td>{meal.nextDish}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
